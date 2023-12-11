@@ -1,3 +1,5 @@
+import { Fragment } from "react";
+
 export default function Index() {
   const sidebarCategories = [""];
 
@@ -44,8 +46,8 @@ export default function Index() {
           />
         </svg>
       ),
-      name: "Students",
-      path: "/dashboard/students",
+      name: "Products",
+      path: "/dashboard/products",
     },
     {
       category: "",
@@ -69,10 +71,27 @@ export default function Index() {
 
   return (
     <div className="container">
-      <div className="sidebar__container">sidebar</div>
+      <div className="sidebar__container">
+        <div className="sidebar__container__logo">CB</div>
+        <div className="sidebar__container__entries">
+          {sidebarEnteries.map((entry, index) => (
+            <div className="sidebar__container__entry" key={index}>
+              <div className="sidebar__container__entry__icon">
+                {entry.icon}
+              </div>
+              <div className="sidebar__container__entry__text">
+                {entry.name}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
       <div className="container__main">
-        <div className="header__container">header</div>
-        <div className="container__container">content</div>
+        <div className="header__container">
+          <div className="header__container">header</div>
+          <div className="header__container">Profile</div>
+        </div>
+        <div className="content__container">content</div>
       </div>
     </div>
   );
