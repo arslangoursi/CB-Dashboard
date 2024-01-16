@@ -1,6 +1,8 @@
 import { Fragment } from "react";
+import { Link } from "@router";
+import { Outlet } from "react-router-dom";
 
-export default function Index() {
+export default function Data() {
   const sidebarCategories = [""];
 
   const sidebarEnteries = [
@@ -28,7 +30,7 @@ export default function Index() {
         </svg>
       ),
       name: "Dashboard",
-      path: "/dashboard",
+      path: "/",
     },
     {
       category: "",
@@ -46,8 +48,8 @@ export default function Index() {
           />
         </svg>
       ),
-      name: "Products",
-      path: "/dashboard/products",
+      name: "Profile",
+      path: "/Profile",
     },
     {
       category: "",
@@ -64,8 +66,8 @@ export default function Index() {
           <path d="M4.74801 1.50991C4.62501 0.968722 4.74801 0.501328 5.2154 0.206133C5.609 -0.0644634 6.02719 -0.0644649 6.42078 0.181531C6.91278 0.476727 7.06038 0.94412 6.93738 1.53451C7.01118 1.53451 7.06038 1.53451 7.13417 1.53451C7.62617 1.53451 8.11816 1.53451 8.61015 1.53451C8.88075 1.53451 9.02835 1.68211 9.02835 1.95271C9.02835 2.1987 9.02835 2.4447 9.02835 2.6907C9.02835 3.13349 8.78235 3.40409 8.31496 3.40409C7.33097 3.40409 6.34699 3.40409 5.363 3.40409C4.69881 3.40409 4.05922 3.40409 3.39503 3.40409C2.92764 3.40409 2.68164 3.15809 2.68164 2.6907C2.68164 2.4447 2.68164 2.2233 2.68164 1.97731C2.68164 1.65751 2.80464 1.53451 3.12443 1.53451C3.61643 1.53451 4.08382 1.53451 4.57581 1.53451C4.62501 1.50991 4.67421 1.50991 4.74801 1.50991ZM5.83039 1.50991C5.92879 1.50991 6.05179 1.50991 6.15019 1.50991C6.27319 1.53451 6.34699 1.46071 6.37159 1.36231C6.46998 1.11632 6.39619 0.821122 6.19939 0.673524C5.97799 0.501327 5.6828 0.501327 5.4614 0.673524C5.24 0.845722 5.1662 1.11632 5.2646 1.36231C5.3138 1.46071 5.363 1.53451 5.486 1.50991C5.609 1.48531 5.732 1.50991 5.83039 1.50991Z" />
         </svg>
       ),
-      name: "Transactions",
-      path: "/dashboard/transactions",
+      name: "Content",
+      path: "/Content",
     },
   ];
 
@@ -75,23 +77,27 @@ export default function Index() {
         <div className="sidebar__container__logo">CB</div>
         <div className="sidebar__container__entries">
           {sidebarEnteries.map((entry, index) => (
-            <div className="sidebar__container__entry" key={index}>
+            <Link
+              className="sidebar__container__entry"
+              key={index}
+              to={entry.path}
+            >
               <div className="sidebar__container__entry__icon">
                 {entry.icon}
               </div>
               <div className="sidebar__container__entry__text">
                 {entry.name}
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
       <div className="container__main">
         <div className="header__container">
-          <div className="header__container">header</div>
-          <div className="header__container">Profile</div>
+          <div className="header__container__left">header</div>
+          <div className="header__container__right">Profile</div>
         </div>
-        <div className="content__container">content</div>
+        <Outlet />
       </div>
     </div>
   );
